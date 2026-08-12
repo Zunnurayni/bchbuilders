@@ -1,0 +1,51 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>BCH Builders Lab</title>
+<desc>Social share banner for BCH Builders Lab with tagline Build. Learn. Collaborate.</desc>
+<defs>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+<circle cx="1.5" cy="1.5" r="1.2" fill="#12211b"/>
+</pattern>
+<radialGradient id="glow" cx="78%" cy="30%" r="55%">
+<stop offset="0%" stop-color="#22C55E" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="flaskFill" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#22C55E" stop-opacity="0.05"/>
+<stop offset="100%" stop-color="#22C55E" stop-opacity="0.28"/>
+</linearGradient>
+</defs>
+
+<rect width="1200" height="630" fill="#030706"/>
+<rect width="1200" height="630" fill="url(#dots)"/>
+<rect width="1200" height="630" fill="url(#glow)"/>
+
+<rect x="0" y="0" width="1200" height="6" fill="#22C55E"/>
+
+<g transform="translate(90, 120)">
+<path d="M12 4h11v7l6 14c2 5-1.5 11-6.5 11h-10c-5 0-8.5-6-6.5-11l6-14V4z" stroke="#4ADE80" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+<line x1="10" y1="4" x2="25" y2="4" stroke="#4ADE80" stroke-width="2.4" stroke-linecap="round"/>
+<text x="46" y="24" font-family="'Space Grotesk',system-ui,sans-serif" font-size="21" font-weight="600" fill="#E8F0EA">BCH Builders Lab</text>
+</g>
+
+<text x="90" y="290" font-family="'JetBrains Mono',monospace" font-size="19" letter-spacing="3" fill="#4ADE80">// PEER-TO-PEER ELECTRONIC CASH ECOSYSTEM</text>
+
+<text x="86" y="380" font-family="'Space Grotesk',system-ui,sans-serif" font-size="82" font-weight="500" letter-spacing="-2" fill="#E8F0EA">Build. Learn.</text>
+<text x="86" y="470" font-family="'Space Grotesk',system-ui,sans-serif" font-size="82" font-weight="400" font-style="italic" letter-spacing="-2" fill="#4ADE80">Collaborate.</text>
+
+<text x="90" y="545" font-family="Inter,system-ui,sans-serif" font-size="24" fill="#A0B0A5">The home for builders shipping Bitcoin Cash.</text>
+
+<text x="90" y="588" font-family="'JetBrains Mono',monospace" font-size="18" fill="#566862">bchbuilders.online</text>
+
+<g transform="translate(870, 150)">
+<path d="M70 30h60v50l40 115c9 27-10 62-34 62h-72c-24 0-43-35-34-62l40-115V30z" stroke="#4ADE80" stroke-width="3" stroke-linejoin="round" fill="none"/>
+<line x1="64" y1="30" x2="136" y2="30" stroke="#4ADE80" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M56 195c9-4 17 2 28 0s20-6 34-4 24 6 38 3 24-4 36-2v16c5 24-12 52-34 52h-72c-22 0-39-28-34-52v-13z" fill="url(#flaskFill)"/>
+<path d="M56 195c9-4 17 2 28 0s20-6 34-4 24 6 38 3 24-4 36-2" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<text x="100" y="250" font-family="'Space Grotesk',sans-serif" font-size="52" font-weight="700" fill="#4ADE80" text-anchor="middle">₿</text>
+<circle cx="96" cy="130" r="4" fill="#4ADE80" opacity="0.9"/>
+<circle cx="108" cy="105" r="3" fill="#4ADE80" opacity="0.7"/>
+<circle cx="90" cy="90" r="2.5" fill="#4ADE80" opacity="0.5"/>
+</g>
+
+<text x="1110" y="590" font-family="'JetBrains Mono',monospace" font-size="15" fill="#566862" text-anchor="end">#BCHBuildersLab</text>
+</svg>
