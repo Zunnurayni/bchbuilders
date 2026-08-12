@@ -157,7 +157,17 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(
 .tier-back .amt{font-family:var(--font-mono);font-size:.8rem;color:var(--green-bright)}
 .tier-pay{font-family:var(--font-mono);font-size:.7rem;padding:.5rem .85rem;background:var(--green);color:var(--bg);border-radius:6px;text-decoration:none;font-weight:500;transition:background .15s}
 .tier-pay:hover{background:var(--green-bright)}
-.tier-back-hint{font-family:var(--font-mono);font-size:.6rem;color:var(--text-3)}
+.tier-back-hint{font-family:var(--font-mono);font-size:.6rem;color:var(--text-3);margin-top:.5rem}
+/* Goal bar */
+.goal-bar-wrap{max-width:640px;margin:0 auto 2.5rem;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:1.5rem 1.75rem}
+.goal-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.goal-title{font-family:var(--font-display);font-size:1.05rem;font-weight:500}
+.goal-nums{font-family:var(--font-mono);font-size:.82rem;color:var(--text-2)}
+.goal-nums .raised{color:var(--green-bright);font-weight:600}
+.goal-track{height:12px;background:var(--bg);border:1px solid var(--border);border-radius:999px;overflow:hidden;position:relative}
+.goal-fill{height:100%;background:linear-gradient(90deg,var(--green-dim),var(--green-bright));border-radius:999px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(34,197,94,.4)}
+.goal-meta{display:flex;justify-content:space-between;margin-top:.75rem;font-family:var(--font-mono);font-size:.7rem;color:var(--text-3)}
+.goal-meta .pct{color:var(--green-bright)}
 /* Direct send box */
 .direct-send{margin-top:2.5rem;padding:2rem;background:var(--surface);border:1px solid var(--border-strong);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:1.25rem}
 .direct-send .price-badge{font-family:var(--font-mono);font-size:.72rem;color:var(--text-2);padding:.35rem .8rem;border:1px solid var(--border-strong);border-radius:999px}
@@ -445,13 +455,25 @@ footer{padding:4rem 0 3rem}
 <section id="support">
 <div class="container">
 <div class="section-tag"><span class="num">07</span> Support the Lab</div>
-<div class="section-head"><h2>Help us keep building. 💚</h2><p>Your support covers internet, snacks, refreshments, and swag. It keeps the room colorful and the builders busy. Tap a tier to reveal its QR code, or send any amount directly.</p></div>
+<div class="section-head"><h2>Help us keep building. 💚</h2><p>Every Lab session costs about $500 to run start to finish. Your support covers internet, refreshments, swag, venue, and dev bounties. Tap a tier to reveal its QR code, or send any amount directly.</p></div>
+
+<div class="goal-bar-wrap">
+<div class="goal-head">
+<div class="goal-title">🚀 Fund the next Lab session</div>
+<div class="goal-nums"><span class="raised" id="goalRaised">$0</span> <span style="color:var(--text-3)">/ $500</span></div>
+</div>
+<div class="goal-track"><div class="goal-fill" id="goalFill"></div></div>
+<div class="goal-meta"><span id="goalPct">0% funded</span><span>Goal: one full hybrid Lab</span></div>
+</div>
+
 <div class="support-grid" id="tierGrid">
 <div class="tier" data-usd="50"><div class="tier-inner"><div class="tier-face tier-front"><span class="tier-emoji">🌐</span><div class="tier-name">Give Devs Internet</div><div class="tier-amount">$50</div><div class="tier-bch" data-bch-for="50">≈ … BCH</div><p class="tier-desc">Keep the Wi-Fi fast and builds flowing</p><span class="tier-flip-hint">Tap for QR ↻</span></div><div class="tier-face tier-back"><div class="tier-qr" data-qr="50"></div><div class="amt">$50 · <span data-bch-for="50">… BCH</span></div><a href="#" class="tier-pay" data-pay="50">Pay with wallet</a><span class="tier-back-hint">tap to flip back</span></div></div></div>
 <div class="tier" data-usd="100"><div class="tier-inner"><div class="tier-face tier-front"><span class="tier-emoji">☕</span><div class="tier-name">Buy 10 Devs Coffee</div><div class="tier-amount">$100</div><div class="tier-bch" data-bch-for="100">≈ … BCH</div><p class="tier-desc">Fuel the room with caffeine and energy</p><span class="tier-flip-hint">Tap for QR ↻</span></div><div class="tier-face tier-back"><div class="tier-qr" data-qr="100"></div><div class="amt">$100 · <span data-bch-for="100">… BCH</span></div><a href="#" class="tier-pay" data-pay="100">Pay with wallet</a><span class="tier-back-hint">tap to flip back</span></div></div></div>
 <div class="tier" data-usd="250"><div class="tier-inner"><div class="tier-face tier-front"><span class="tier-emoji">🎽</span><div class="tier-name">Give Devs Swag</div><div class="tier-amount">$250</div><div class="tier-bch" data-bch-for="250">≈ … BCH</div><p class="tier-desc">T-shirts, stickers, and BCH merch</p><span class="tier-flip-hint">Tap for QR ↻</span></div><div class="tier-face tier-back"><div class="tier-qr" data-qr="250"></div><div class="amt">$250 · <span data-bch-for="250">… BCH</span></div><a href="#" class="tier-pay" data-pay="250">Pay with wallet</a><span class="tier-back-hint">tap to flip back</span></div></div></div>
-<div class="tier" data-usd="500"><div class="tier-inner"><div class="tier-face tier-front"><span class="tier-emoji">🚀</span><div class="tier-name">Be a Sponsor</div><div class="tier-amount">$500</div><div class="tier-bch" data-bch-for="500">≈ … BCH</div><p class="tier-desc">Venue, food, bounties, name on the wall</p><span class="tier-flip-hint">Tap for QR ↻</span></div><div class="tier-face tier-back"><div class="tier-qr" data-qr="500"></div><div class="amt">$500 · <span data-bch-for="500">… BCH</span></div><a href="#" class="tier-pay" data-pay="500">Pay with wallet</a><span class="tier-back-hint">tap to flip back</span></div></div></div>
+<div class="tier" data-usd="500"><div class="tier-inner"><div class="tier-face tier-front"><span class="tier-emoji">🚀</span><div class="tier-name">Sponsor a Lab</div><div class="tier-amount">$500</div><div class="tier-bch" data-bch-for="500">≈ … BCH</div><p class="tier-desc">Powers one full hybrid Lab, start to finish</p><span class="tier-flip-hint">Tap for QR ↻</span></div><div class="tier-face tier-back"><div class="tier-qr" data-qr="500"></div><div class="amt">$500 · <span data-bch-for="500">… BCH</span></div><a href="#" class="tier-pay" data-pay="500">Pay with wallet</a><span class="tier-back-hint">tap to flip back</span></div></div></div>
 </div>
+
+<p style="text-align:center;font-family:var(--font-mono);font-size:.78rem;color:var(--text-2);max-width:600px;margin:1.5rem auto 0">Funds go directly to internet, refreshments, swag, venue, and dev bounties. We report transparently after every session.</p>
 
 <div class="direct-send">
 <div class="mono eyebrow">Send BCH directly</div>
@@ -587,6 +609,20 @@ footer{padding:4rem 0 3rem}
 const BCH_ADDRESS='bitcoincash:qpuzdxhlmwyygy2marsx3tjxzqgk7jg8ccxr77mz0d';
 let bchPrice=213; // fallback
 
+// ============================================================
+//  EDIT THIS: how much has been raised toward the next Lab.
+//  Update the number whenever you receive support. Goal is $500.
+const GOAL_RAISED_USD = 0;   // <-- change this number (e.g. 175)
+const GOAL_TARGET_USD = 500; // one full Lab session
+// ============================================================
+function renderGoal(){
+  const raised=Math.max(0,GOAL_RAISED_USD), target=GOAL_TARGET_USD;
+  const pct=Math.min(100,Math.round((raised/target)*100));
+  const r=document.getElementById('goalRaised'); if(r)r.textContent='$'+raised;
+  const f=document.getElementById('goalFill'); if(f)setTimeout(()=>{f.style.width=pct+'%';},200);
+  const p=document.getElementById('goalPct'); if(p)p.textContent=pct+'% funded';
+}
+
 // Build filter
 document.getElementById('buildChips').addEventListener('click',e=>{
 if(!e.target.classList.contains('chip'))return;
@@ -655,6 +691,7 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin-cash&vs_currenc
 
 // Init
 refreshConversions();
+renderGoal();
 </script>
 </body>
 </html>
