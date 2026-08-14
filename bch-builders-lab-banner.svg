@@ -37,11 +37,27 @@
 <text x="90" y="588" font-family="'JetBrains Mono',monospace" font-size="18" fill="#566862">bchbuilders.online</text>
 
 <g transform="translate(870, 150)">
-<path d="M70 30h60v50l40 115c9 27-10 62-34 62h-72c-24 0-43-35-34-62l40-115V30z" stroke="#4ADE80" stroke-width="3" stroke-linejoin="round" fill="none"/>
-<line x1="64" y1="30" x2="136" y2="30" stroke="#4ADE80" stroke-width="3.5" stroke-linecap="round"/>
-<path d="M56 195c9-4 17 2 28 0s20-6 34-4 24 6 38 3 24-4 36-2v16c5 24-12 52-34 52h-72c-22 0-39-28-34-52v-13z" fill="url(#flaskFill)"/>
-<path d="M56 195c9-4 17 2 28 0s20-6 34-4 24 6 38 3 24-4 36-2" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-<text x="100" y="250" font-family="'Space Grotesk',sans-serif" font-size="52" font-weight="700" fill="#4ADE80" text-anchor="middle">₿</text>
+<defs>
+<clipPath id="bannerFlaskInside">
+<path d="M74 34h52v44l40 112c8 24-10 58-33 58h-66c-23 0-41-34-33-58l40-112V34z"/>
+</clipPath>
+</defs>
+<!-- Liquid, clipped to flask interior -->
+<g clip-path="url(#bannerFlaskInside)">
+<rect x="20" y="188" width="180" height="90" fill="#22C55E" opacity="0.20"/>
+<path d="M20 188 q17 -11 34 0 t34 0 t34 0 t34 0 t34 0 V278 H20 Z" fill="#22C55E" opacity="0.26"/>
+<path d="M20 188 q17 -11 34 0 t34 0 t34 0 t34 0 t34 0" stroke="#4ADE80" stroke-width="2.5" fill="none" opacity="0.7"/>
+</g>
+<!-- Flask outline -->
+<path d="M74 34h52v44l40 112c8 24-10 58-33 58h-66c-23 0-41-34-33-58l40-112V34z" stroke="#4ADE80" stroke-width="3" stroke-linejoin="round" fill="none"/>
+<line x1="66" y1="34" x2="134" y2="34" stroke="#4ADE80" stroke-width="3.5" stroke-linecap="round"/>
+<!-- Bitcoin B, vector, centered at x=100, seated in liquid -->
+<g transform="translate(89,214)" fill="#4ADE80">
+<rect x="10" y="-38" width="8" height="60" rx="1.5"/>
+<rect x="-4" y="-38" width="8" height="60" rx="1.5"/>
+<path d="M-4 -38h26c14 0 21 8 21 18 0 7-4 12-10 15 7 2 12 8 12 16 0 11-9 19-23 19h-26v-13h24c7 0 11-3 11-8s-4-8-11-8h-24v-11h21c6 0 10-3 10-8s-4-7-10-7h-21z"/>
+</g>
+<!-- Bubbles -->
 <circle cx="96" cy="130" r="4" fill="#4ADE80" opacity="0.9"/>
 <circle cx="108" cy="105" r="3" fill="#4ADE80" opacity="0.7"/>
 <circle cx="90" cy="90" r="2.5" fill="#4ADE80" opacity="0.5"/>
