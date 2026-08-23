@@ -1,12 +1,13 @@
 // BCH Builders Lab — service worker
 // Bump CACHE version whenever you redeploy so users get fresh content.
-const CACHE = 'bch-builders-lab-v2';
+const CACHE = 'bch-builders-lab-v10';
 const CORE = [
   '/',
   '/index.html',
   '/icon-192.png',
   '/icon-512.png',
-  '/manifest.webmanifest'
+  '/manifest.webmanifest',
+  '/updates.json'
 ];
 
 // Install: pre-cache the core shell
@@ -41,6 +42,18 @@ self.addEventListener('fetch', (e) => {
         caches.open(CACHE).then((c) => c.put(req, copy));
         return res;
       }).catch(() => caches.match(req).then((r) => r || caches.match('/')))
+    );
+    return;
+  }
+
+  // updates.json: network-first so the feed stays fresh, fall back to cache offline
+  if (url.pathname === '/updates.json') {
+    e.respondWith(
+      fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
+        return res;
+      }).catch(() => caches.match(req))
     );
     return;
   }

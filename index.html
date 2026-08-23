@@ -186,6 +186,38 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(
 .goal-fill{height:100%;background:linear-gradient(90deg,var(--green-dim),var(--green-bright));border-radius:999px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(34,197,94,.4)}
 .goal-meta{display:flex;justify-content:space-between;margin-top:.75rem;font-family:var(--font-mono);font-size:.7rem;color:var(--text-3)}
 .goal-meta .pct{color:var(--green-bright)}
+/* Learning resources */
+.learn-wrap{margin-top:2.5rem}
+.learn-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.25rem}
+.learn-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.learn-col h4{font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green-bright);margin-bottom:1rem;font-weight:500;display:flex;align-items:center;gap:.5rem}
+.learn-col ul{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+.learn-col li{line-height:1.35}
+.learn-col a{color:var(--text);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .15s;display:block}
+.learn-col a:hover{color:var(--green-bright)}
+.learn-col a .desc{display:block;color:var(--text-3);font-size:.76rem;font-weight:400;font-family:var(--font-mono);margin-top:.15rem}
+/* Learn resource cards */
+.learn-col ul.cards{gap:.6rem}
+.learn-col .lcard{display:flex;flex-direction:column;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:.85rem 1rem;text-decoration:none;transition:border-color .18s,transform .18s}
+.learn-col .lcard:hover{border-color:var(--green-dim);transform:translateY(-2px)}
+.learn-col .lcard .lc-title{font-family:var(--font-display);font-size:.95rem;font-weight:500;color:var(--text)}
+.learn-col .lcard .lc-desc{color:var(--text-3);font-size:.75rem;font-family:var(--font-mono);margin-top:.2rem;line-height:1.4}
+.learn-col .lcard .lc-cta{font-family:var(--font-mono);font-size:.72rem;color:var(--green-bright);margin-top:.6rem;align-self:flex-start}
+.learn-col .lcard:hover .lc-cta{color:var(--lime)}
+/* Ecosystem Updates feed */
+.updates-feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:1.25rem}
+.update-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative}
+.update-card:hover{border-color:var(--green-dim);transform:translateY(-2px)}
+.update-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.9rem}
+.update-cat{font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--green-bright);padding:.25rem .6rem;border:1px solid var(--border-strong);border-radius:999px;background:rgba(34,197,94,.05)}
+.update-date{font-family:var(--font-mono);font-size:.68rem;color:var(--text-3)}
+.update-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:500;margin-bottom:.5rem;line-height:1.25}
+.update-card p{color:var(--text-2);font-size:.9rem;flex:1;margin-bottom:1rem}
+.update-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-top:.9rem;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:.72rem}
+.update-source{color:var(--text-3)}.update-source b{color:var(--text-2);font-weight:500}
+.update-cta{color:var(--green-bright)}
+.updates-empty{color:var(--text-3);font-family:var(--font-mono);font-size:.85rem;padding:2rem 0}
+.updates-loading{color:var(--text-3);font-family:var(--font-mono);font-size:.85rem;padding:2rem 0}
 /* Direct send box */
 .direct-send{margin-top:2.5rem;padding:2rem;background:var(--surface);border:1px solid var(--border-strong);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:1.25rem}
 .direct-send .price-badge{font-family:var(--font-mono);font-size:.72rem;color:var(--text-2);padding:.35rem .8rem;border:1px solid var(--border-strong);border-radius:999px}
@@ -253,9 +285,10 @@ footer{padding:4rem 0 3rem}
 <a href="#" class="brand"><span class="brand-mark"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M12 3h8v5l4 9c1.5 3.5-1 8-5 8h-6c-4 0-6.5-4.5-5-8l4-9V3z" stroke="#4ADE80" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 17h12" stroke="#4ADE80" stroke-width="1.5"/></svg></span>BCH Builders Lab</a>
 <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <div class="nav-links">
+<a href="#updates" onclick="this.parentElement.classList.remove('open')">Updates</a>
 <a href="#builds" onclick="this.parentElement.classList.remove('open')">Builds</a>
 <a href="#tools" onclick="this.parentElement.classList.remove('open')">Tools</a>
-<a href="#knowledge" onclick="this.parentElement.classList.remove('open')">Knowledge</a>
+<a href="#knowledge" onclick="this.parentElement.classList.remove('open')">Learn</a>
 <a href="#people" onclick="this.parentElement.classList.remove('open')">Builders</a>
 <a href="#lab" onclick="this.parentElement.classList.remove('open')">Next Lab</a>
 <a href="#support" onclick="this.parentElement.classList.remove('open')">Support</a>
@@ -327,10 +360,22 @@ footer{padding:4rem 0 3rem}
 </div>
 </section>
 
-<!-- 02 -->
+<!-- 02 Ecosystem Updates -->
+<section id="updates">
+<div class="container">
+<div class="section-tag"><span class="num">02</span> Ecosystem Updates</div>
+<div class="section-head"><h2>What's new across BCH.</h2><p>A live feed of what's happening in the Bitcoin Cash builder ecosystem: new lessons, videos, hackathons, tools, and releases. Each links straight to the source.</p></div>
+<div class="filter-row"><div class="chips" id="updateChips">
+<button class="chip active" data-filter="all">all</button><button class="chip" data-filter="Builds">builds</button><button class="chip" data-filter="Learning">learning</button><button class="chip" data-filter="Tools">tools</button><button class="chip" data-filter="Hackathons">hackathons</button><button class="chip" data-filter="Events">events</button><button class="chip" data-filter="Videos">videos</button><button class="chip" data-filter="Articles">articles</button><button class="chip" data-filter="Releases">releases</button>
+</div></div>
+<div class="updates-feed" id="updatesFeed"><div class="updates-loading">Loading updates…</div></div>
+</div>
+</section>
+
+<!-- 03 -->
 <section id="builds">
 <div class="container">
-<div class="section-tag"><span class="num">02</span> What builders are building</div>
+<div class="section-tag"><span class="num">03</span> What builders are building</div>
 <div class="section-head"><h2>Featured builds.</h2><p>A living directory of real products, tools, and infrastructure shipping on Bitcoin Cash right now.</p></div>
 <div class="filter-row"><div class="chips" id="buildChips">
 <button class="chip active" data-filter="all">all</button><button class="chip" data-filter="payments">payments</button><button class="chip" data-filter="cashtokens">cashtokens</button><button class="chip" data-filter="wallets">wallets</button><button class="chip" data-filter="defi">defi</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="games">games</button>
@@ -353,7 +398,7 @@ footer{padding:4rem 0 3rem}
 <!-- 03 -->
 <section id="tools">
 <div class="container">
-<div class="section-tag"><span class="num">03</span> Start building on BCH</div>
+<div class="section-tag"><span class="num">04</span> Start building on BCH</div>
 <div class="section-head"><h2>Everything you need to ship.</h2><p>New to Bitcoin Cash? Start here. Battle-tested tools, libraries, and open-source projects the community uses every day.</p></div>
 <div class="tools-grid">
 <a href="https://cashscript.org" target="_blank" rel="noopener" class="tool"><div class="tool-head"><h3>CashScript</h3><span class="tag">contracts</span></div><p>High-level smart contract language for BCH. Compile, deploy, and interact from JavaScript.</p><span class="tool-link">cashscript.org &rarr;</span></a>
@@ -369,25 +414,60 @@ footer{padding:4rem 0 3rem}
 <a href="https://stack.xo.cash/tools/primitives.html" target="_blank" rel="noopener" class="tool"><div class="tool-head"><h3>BCH Stack</h3><span class="tag">reference</span></div><p>Comprehensive reference of BCH development primitives, tools, and ecosystem building blocks.</p><span class="tool-link">stack.xo.cash &rarr;</span></a>
 <a href="https://bitcoincashresearch.org" target="_blank" rel="noopener" class="tool"><div class="tool-head"><h3>BCH Research</h3><span class="tag">docs</span></div><p>The community research forum. CHIPs, upgrade discussions, and protocol-level conversations.</p><span class="tool-link">bitcoincashresearch.org &rarr;</span></a>
 </div>
-<div class="mt-4" style="max-width:640px">
-<div class="section-tag" style="margin-bottom:.75rem"><span class="num">&gt;</span> Learning resources</div>
-<div style="display:flex;flex-direction:column;gap:.75rem">
-<a href="https://fullstack-agents.github.io/block-blog/#/education" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:.9rem">🎓 BCH Education Hub — fundamentals to hands-on JavaScript (free)</a>
-<a href="https://cashscript.org/docs/basics/getting-started" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:.9rem">📖 CashScript — Getting Started Guide</a>
-<a href="https://www.youtube.com/@BitcoinCashUniversity" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:.9rem">🎥 Sayoshi Nakamario — Bitcoin Cash University (YouTube)</a>
-<a href="https://www.youtube.com/@mrzwets" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:.9rem">🎥 Mathieu Geukens — CashScript & BCH dev tutorials (YouTube)</a>
-</div>
-</div>
 </div>
 </section>
 
 <!-- 04 -->
 <section id="knowledge">
 <div class="container">
-<div class="section-tag"><span class="num">04</span> Knowledge base</div>
-<div class="section-head"><h2>Learn from the builders.</h2><p>Recaps, essays, and reports from meetups, hackathons, and community sessions.</p></div>
+<div class="section-tag"><span class="num">05</span> Learn BCH</div>
+<div class="section-head"><h2>Everything you need to learn Bitcoin Cash.</h2><p>From your first transaction to shipping smart contracts. Free, community-made, and beginner-friendly, all in one place.</p></div>
+<div class="learn-groups">
+
+<div class="learn-col">
+<h4>📖 Read</h4>
+<ul class="cards">
+<li><a class="lcard" href="https://fullstack-agents.github.io/block-blog/#/education" target="_blank" rel="noopener"><span class="lc-title">BCH Education Hub</span><span class="lc-desc">BCH fundamentals to hands-on JavaScript, free</span><span class="lc-cta">Read &rarr;</span></a></li>
+<li><a class="lcard" href="https://developers.cash" target="_blank" rel="noopener"><span class="lc-title">Developers.Cash</span><span class="lc-desc">Curated catalogue of BCH dev resources</span><span class="lc-cta">Read &rarr;</span></a></li>
+<li><a class="lcard" href="https://bch.info/en/developers" target="_blank" rel="noopener"><span class="lc-title">bch.info Developers</span><span class="lc-desc">Libraries, SDKs, and REST APIs overview</span><span class="lc-cta">Read &rarr;</span></a></li>
+</ul>
+</div>
+
+<div class="learn-col">
+<h4>👀 Watch & Follow</h4>
+<ul class="cards">
+<li><a class="lcard" href="https://www.youtube.com/@BitcoinCashUniversity" target="_blank" rel="noopener"><span class="lc-title">Bitcoin Cash University</span><span class="lc-desc">Sayoshi Nakamario, video tutorials</span><span class="lc-cta">Watch &rarr;</span></a></li>
+<li><a class="lcard" href="https://www.youtube.com/@mrzwets" target="_blank" rel="noopener"><span class="lc-title">Mathieu Geukens</span><span class="lc-desc">CashScript & BCH dev walkthroughs</span><span class="lc-cta">Watch &rarr;</span></a></li>
+<li><a class="lcard" href="https://x.com/TheBCHPodcast" target="_blank" rel="noopener"><span class="lc-title">The Bitcoin Cash Podcast</span><span class="lc-desc">Ecosystem interviews & updates</span><span class="lc-cta">Follow &rarr;</span></a></li>
+</ul>
+</div>
+
+<div class="learn-col">
+<h4>🛠️ Build Hands-On</h4>
+<ul class="cards">
+<li><a class="lcard" href="https://cashscript.org/docs/basics/getting-started" target="_blank" rel="noopener"><span class="lc-title">CashScript: Getting Started</span><span class="lc-desc">Write & deploy your first BCH smart contract</span><span class="lc-cta">Try it &rarr;</span></a></li>
+<li><a class="lcard" href="https://arena.layer1.cash" target="_blank" rel="noopener"><span class="lc-title">CashScript Arena</span><span class="lc-desc">Interactive contract challenges</span><span class="lc-cta">Try it &rarr;</span></a></li>
+<li><a class="lcard" href="https://playground.cashscript.org" target="_blank" rel="noopener"><span class="lc-title">CashScript Playground</span><span class="lc-desc">Write & run contracts in the browser</span><span class="lc-cta">Try it &rarr;</span></a></li>
+<li><a class="lcard" href="https://ide.bitauth.com" target="_blank" rel="noopener"><span class="lc-title">Bitauth IDE</span><span class="lc-desc">Design & debug BCH scripts step by step</span><span class="lc-cta">Try it &rarr;</span></a></li>
+<li><a class="lcard" href="https://askjson.layer1.cash" target="_blank" rel="noopener"><span class="lc-title">AskJSON</span><span class="lc-desc">AI assistant for BCH dev questions</span><span class="lc-cta">Try it &rarr;</span></a></li>
+</ul>
+</div>
+
+<div class="learn-col">
+<h4>🔬 Go Deeper</h4>
+<ul class="cards">
+<li><a class="lcard" href="https://bitcoincash.org/bitcoin.pdf" target="_blank" rel="noopener"><span class="lc-title">The Bitcoin Whitepaper</span><span class="lc-desc">Where peer-to-peer cash began</span><span class="lc-cta">Explore &rarr;</span></a></li>
+<li><a class="lcard" href="https://documentation.cash" target="_blank" rel="noopener"><span class="lc-title">Protocol Documentation</span><span class="lc-desc">Full BCH protocol spec, kept up to date</span><span class="lc-cta">Explore &rarr;</span></a></li>
+<li><a class="lcard" href="https://bitcoincashresearch.org" target="_blank" rel="noopener"><span class="lc-title">BCH Research</span><span class="lc-desc">CHIPs & protocol-level discussion</span><span class="lc-cta">Explore &rarr;</span></a></li>
+<li><a class="lcard" href="https://github.com/2qx/awesome-bitcoin-cash" target="_blank" rel="noopener"><span class="lc-title">Awesome Bitcoin Cash</span><span class="lc-desc">Big curated list of BCH projects & tools</span><span class="lc-cta">Explore &rarr;</span></a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="mt-4">
+<div class="section-tag" style="margin:2rem 0 1rem"><span class="num">&gt;</span> From our community</div>
 <div class="kb-grid">
-<a href="https://fullstack-agents.github.io/block-blog/#/education" target="_blank" rel="noopener" class="kb-card"><div class="kb-meta"><span class="type">Education</span><span class="dot">·</span><span>Free hub</span></div><h3>Learn Bitcoin Cash — from fundamentals to code</h3><p>A free BCH education hub covering the fundamentals through hands-on JavaScript development: wallets, transactions, the network, and more. Perfect for beginners and builders.</p><span class="arrow">Start learning &rarr;</span></a>
 <a href="https://x.com/Nurain_Dev/status/2085021652702650635" target="_blank" rel="noopener" class="kb-card"><div class="kb-meta"><span class="type">Article</span><span class="dot">·</span><span>Aug 2026</span></div><h3>BCH Builders Meetup: The Next Evolution</h3><p>Why we're moving from the meetup format to structured build sessions, and what BCH Builders Lab unlocks for the ecosystem.</p><span class="arrow">Read article &rarr;</span></a>
 <a href="https://x.com/Nurain_Dev/status/2082846013887262934" target="_blank" rel="noopener" class="kb-card"><div class="kb-meta"><span class="type">Recap</span><span class="dot">·</span><span>Meetup v4</span></div><h3>BCH Builders Meetup v4</h3><p>The latest edition of the builder gathering. Ecosystem updates, project demos, and what the community is shipping next.</p><span class="arrow">Read recap &rarr;</span></a>
 <a href="https://x.com/Nurain_Dev/status/2074484977484300607" target="_blank" rel="noopener" class="kb-card"><div class="kb-meta"><span class="type">Recap</span><span class="dot">·</span><span>Meetup v3</span></div><h3>BCH Builders Meetup v3</h3><p>NFTs on BCH, adoption tools, privacy. OPTN Wallet reveal, Bugs.cash play-to-earn, Deel payroll integration, and the case for coordinated marketing.</p><span class="arrow">Read recap &rarr;</span></a>
@@ -397,12 +477,14 @@ footer{padding:4rem 0 3rem}
 <a href="https://fathom.video/share/sea8onhHcYCkTsbuyjbXoG9Q7yc99ige" target="_blank" rel="noopener" class="kb-card"><div class="kb-meta"><span class="type">Recording</span><span class="dot">·</span><span>Jul 5, 2026</span></div><h3>Meetup v3 — Full Recording</h3><p>The complete video session: project reveals, live discussion, and the full conversation on BCH's marketing and coordination gap.</p><span class="arrow">Watch recording &rarr;</span></a>
 </div>
 </div>
+
+</div>
 </section>
 
 <!-- 05 minimal -->
 <section id="people">
 <div class="container">
-<div class="section-tag"><span class="num">05</span> Meet the builders</div>
+<div class="section-tag"><span class="num">06</span> Meet the builders</div>
 <div class="section-head"><h2>The people building Bitcoin Cash.</h2><p>Developers, advocates, and contributors moving the ecosystem forward.</p></div>
 
 <div class="mono eyebrow" style="margin-bottom:1rem">Our community</div>
@@ -454,7 +536,7 @@ footer{padding:4rem 0 3rem}
 <!-- 06 -->
 <section id="lab">
 <div class="container">
-<div class="section-tag"><span class="num">06</span> BCH Builders Lab</div>
+<div class="section-tag"><span class="num">07</span> BCH Builders Lab</div>
 <div class="section-head"><h2>The Lab is open.</h2><p>A hybrid, hands-on developer session where we explore BCH tools, experiment with infrastructure, build together, and demo what we've created.</p></div>
 <div class="lab-card">
 <div class="lab-grid">
@@ -463,8 +545,8 @@ footer{padding:4rem 0 3rem}
 <h3 class="lab-title">BCH Builders Lab #1</h3>
 <p style="color:var(--text-2);font-size:1rem;max-width:480px">Our first hybrid meetup. Come with what you're building, or with the question you've been chewing on.</p>
 <div class="lab-meta">
-<div class="meta-item"><div class="label">Date</div><div class="value">Sunday, August 16</div></div>
-<div class="meta-item"><div class="label">Time</div><div class="value">3:00 PM WAT</div></div>
+<div class="meta-item"><div class="label">Date</div><div class="value">Sunday, August 30</div></div>
+<div class="meta-item"><div class="label">Time</div><div class="value">3:00 - 6:00 PM WAT</div></div>
 <div class="meta-item"><div class="label">Physical venue</div><div class="value">Yola, Nigeria</div></div>
 <div class="meta-item"><div class="label">Online</div><div class="value green">Google Meet</div></div>
 </div>
@@ -488,7 +570,7 @@ footer{padding:4rem 0 3rem}
 <!-- 07 interactive support -->
 <section id="support">
 <div class="container">
-<div class="section-tag"><span class="num">07</span> Support the Lab</div>
+<div class="section-tag"><span class="num">08</span> Support the Lab</div>
 <div class="section-head"><h2>Help us keep building. 💚</h2><p>Every Lab session costs about $500 to run start to finish. Your support covers internet, refreshments, swag, venue, and dev bounties. Tap a tier to reveal its QR code, or send any amount directly.</p></div>
 
 <div class="goal-bar-wrap">
@@ -535,7 +617,7 @@ footer{padding:4rem 0 3rem}
 <!-- 08 -->
 <section id="contribute">
 <div class="container">
-<div class="section-tag"><span class="num">08</span> Contribute</div>
+<div class="section-tag"><span class="num">09</span> Contribute</div>
 <div class="section-head"><h2>Build with us.</h2><p>You don't have to start a new project. There are five paths in.</p></div>
 <div class="contribute-grid">
 <a href="#tools" class="path"><div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Build</h3><p>Create applications and infrastructure on BCH.</p></a>
@@ -550,7 +632,7 @@ footer{padding:4rem 0 3rem}
 <!-- 09 world map -->
 <section>
 <div class="container">
-<div class="section-tag"><span class="num">09</span> The community</div>
+<div class="section-tag"><span class="num">10</span> The community</div>
 <div class="section-head"><h2>Building across borders.</h2><p>BCH Builders Lab is growing through developer communities, universities, and technology hubs. From 20+ Nigerian states to builders worldwide.</p></div>
 <div class="community">
 <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" fill="none">
@@ -627,7 +709,7 @@ footer{padding:4rem 0 3rem}
 <p>Peer-to-peer electronic cash, built by the people using it. A community initiative hosted by BitcoinCash Nigeria.</p>
 </div>
 <div class="footer-col"><h4>Community</h4><ul><li><a href="https://x.com/BCHNigeria" target="_blank">X / Twitter</a></li><li><a href="#" target="_blank">Telegram</a></li><li><a href="#" target="_blank">YouTube</a></li></ul></div>
-<div class="footer-col"><h4>Explore</h4><ul><li><a href="#builds">Builds</a></li><li><a href="#tools">Toolkit</a></li><li><a href="#knowledge">Knowledge</a></li><li><a href="#people">Builders</a></li><li><a href="#lab">Next Lab</a></li><li><a href="#support">Support</a></li></ul></div>
+<div class="footer-col"><h4>Explore</h4><ul><li><a href="#updates">Updates</a></li><li><a href="#builds">Builds</a></li><li><a href="#tools">Toolkit</a></li><li><a href="#knowledge">Learn</a></li><li><a href="#people">Builders</a></li><li><a href="#lab">Next Lab</a></li><li><a href="#support">Support</a></li></ul></div>
 </div>
 <div class="footer-base">
 <div class="footer-tag">P2P Electronic Cash <span>for the World</span> · #BCHBuildersLab</div>
@@ -726,6 +808,47 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin-cash&vs_currenc
 // Init
 refreshConversions();
 renderGoal();
+
+// ===== Ecosystem Updates feed =====
+let allUpdates=[];
+const catEmoji={Builds:'🚀',Learning:'📚',Tools:'🛠️',Hackathons:'🏆',Events:'📅',Videos:'🎥',Articles:'📝',Releases:'📦'};
+function fmtDate(d){
+  try{const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return d;}
+}
+function ctaFor(cat){
+  return ({Videos:'Watch',Hackathons:'Learn more',Events:'View event',Releases:'Explore',Tools:'Explore',Learning:'View update',Articles:'Read',Builds:'Explore'})[cat]||'View';
+}
+function renderUpdates(filter){
+  const feed=document.getElementById('updatesFeed');
+  if(!feed)return;
+  let list=allUpdates.slice();
+  // sort newest first by date
+  list.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  if(filter&&filter!=='all')list=list.filter(u=>u.category===filter);
+  if(!list.length){feed.innerHTML='<div class="updates-empty">// nothing here yet, check back soon</div>';return;}
+  feed.innerHTML=list.map(u=>{
+    const emoji=catEmoji[u.category]||'✨';
+    return '<a href="'+u.link+'" target="_blank" rel="noopener" class="update-card">'
+      +'<div class="update-top"><span class="update-cat">'+emoji+' '+u.category+'</span><span class="update-date">'+fmtDate(u.date)+'</span></div>'
+      +'<h3>'+u.title+'</h3><p>'+u.description+'</p>'
+      +'<div class="update-foot"><span class="update-source">from <b>'+u.source+'</b></span><span class="update-cta">'+ctaFor(u.category)+' &rarr;</span></div>'
+      +'</a>';
+  }).join('');
+}
+fetch('/updates.json').then(r=>r.json()).then(d=>{
+  allUpdates=(d&&d.updates)||[];
+  renderUpdates('all');
+}).catch(()=>{
+  const feed=document.getElementById('updatesFeed');
+  if(feed)feed.innerHTML='<div class="updates-empty">// updates unavailable right now</div>';
+});
+const uc=document.getElementById('updateChips');
+if(uc)uc.addEventListener('click',e=>{
+  if(!e.target.classList.contains('chip'))return;
+  uc.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  renderUpdates(e.target.dataset.filter);
+});
 
 // Register service worker (PWA install + offline)
 if ('serviceWorker' in navigator) {

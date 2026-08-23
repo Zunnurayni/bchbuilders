@@ -1,0 +1,52 @@
+{
+  "updates": [
+    {
+      "category": "Events",
+      "title": "Sayoshi Nakamario Presents Bitcoin Cash to University Students",
+      "description": "Sayoshi introduces BCH and its potential to the next generation of university builders at UBC.",
+      "source": "University of British Columbia",
+      "date": "2026-08-15",
+      "link": "https://youtu.be/XBFlohUI9JI"
+    },
+    {
+      "category": "Learning",
+      "title": "Chris Troutner Expands the BCH Learning Path",
+      "description": "Lessons 4 and 5 are now live, adding new material to the BCH learning experience.",
+      "source": "Chris Troutner",
+      "date": "2026-08-14",
+      "link": "https://fullstack-agents.github.io/block-blog/#/education"
+    },
+    {
+      "category": "Videos",
+      "title": "Jerry Qian Takes a Deep Dive into Introspection & Covenants",
+      "description": "Jerry Qian of OPTN Labs presents an exploration of introspection and covenants at bitcoin++ Toronto.",
+      "source": "Jerry Qian, OPTN Labs",
+      "date": "2026-08-13",
+      "link": "https://www.youtube.com/watch?v=APeNmdx8NIg"
+    },
+    {
+      "category": "Videos",
+      "title": "Mathieu Geukens on the Future of BCH Scripting",
+      "description": "Mathieu Geukens discusses the proposed BCH scripting overhaul and what it could mean for developers.",
+      "source": "Mathieu Geukens",
+      "date": "2026-08-13",
+      "link": "https://youtu.be/iPFij870lu8"
+    },
+    {
+      "category": "Events",
+      "title": "BCH Builders Lab #1 is open for RSVP",
+      "description": "Our first physical + online hybrid session. Sunday, August 30, 3:00 to 6:00 PM WAT, in Yola and on Google Meet.",
+      "source": "BCH Builders Lab",
+      "date": "2026-08-12",
+      "link": "https://luma.com/event/evt-WAKR9lqYsYFiKYE"
+    },
+    {
+      "category": "Hackathons",
+      "title": "BCH-1 Hackcelerator winners announced",
+      "description": "255 builders, 53 projects. Winners across Technology, CashTokens, and Application tracks. The ecosystem's largest build sprint.",
+      "source": "BCH-1",
+      "date": "2026-08-01",
+      "link": "https://x.com/bch_1_official/status/2029927755270529102"
+    }
+  ]
+}
