@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lab Floor — BCH Builders Lab</title>
+<title>Lab Floor · BCH Builders Lab</title>
 <meta name="description" content="A community for developers, students, designers, and entrepreneurs training and exploring the Bitcoin Cash peer-to-peer electronic cash ecosystem.">
 <link rel="canonical" href="https://www.bchbuilders.online/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.bchbuilders.online/">
-<meta property="og:title" content="BCH Builders Lab — Build. Learn. Collaborate.">
+<meta property="og:title" content="BCH Builders Lab · Build. Learn. Collaborate.">
 <meta property="og:description" content="The home for developers building the next generation of Bitcoin Cash applications and infrastructure. Training and exploring the peer-to-peer electronic cash ecosystem.">
 <meta property="og:image" content="https://www.bchbuilders.online/bch-builders-lab-banner.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BCH Builders Lab — Build. Learn. Collaborate.">
+<meta name="twitter:title" content="BCH Builders Lab · Build. Learn. Collaborate.">
 <meta name="twitter:description" content="The home for developers building the next generation of Bitcoin Cash applications and infrastructure.">
 <meta name="twitter:image" content="https://www.bchbuilders.online/bch-builders-lab-banner.png">
 <meta name="theme-color" content="#030706">
@@ -336,49 +336,39 @@ footer{padding:4rem 0 3rem}
 <section style="padding-top:3rem">
 <div class="container">
 <div class="section-tag"><span class="num">//</span> The Lab Floor</div>
-<div class="section-head floor-intro"><h2>Who's building, and what they're shipping. 🧪</h2><p>The Lab Floor is the people in the room at Builders Lab sessions and the ideas they're working on right now. This isn't the ecosystem hall of fame (that's <a href="/#people" style="color:var(--green-bright);text-decoration:none">Builders</a>) — it's the live floor. Add yourself by opening a pull request.</p></div>
+<div class="section-head floor-intro"><h2>Who's building, and what they're shipping. 🧪</h2><p>The Lab Floor is the people in the room at Builders Lab sessions and the ideas they're working on right now. This isn't the ecosystem hall of fame (that's <a href="/#people" style="color:var(--green-bright);text-decoration:none">Builders</a>), it's the live floor. Add yourself by opening a pull request.</p></div>
 
 <div class="floor-table-wrap">
 <table class="floor-table">
 <thead><tr><th>Builder</th><th>What they're building</th><th>Link</th></tr></thead>
-<tbody>
-<tr><td class="name">Nurain</td><td>Paysat — non-custodial BCH bill payments for Nigeria</td><td><a href="https://trypaysats.xyz" target="_blank">trypaysats.xyz</a></td></tr>
-<tr><td class="name">Jerry Qian</td><td>OPTN Wallet — CashStamps sweeps & CashTokens minting</td><td><a href="https://x.com/OPTNLabs" target="_blank">@OPTNLabs</a></td></tr>
-<tr><td class="name">George Bence</td><td>Bugs.cash — play-to-earn NFT layer on a BCH faucet game</td><td><a href="https://bugs.cash" target="_blank">bugs.cash</a></td></tr>
-</tbody>
+<tbody id="floorBody"><tr><td colspan="3" class="floor-empty">Loading builders…</td></tr></tbody>
 </table>
 </div>
 
 <div class="section-tag" style="margin:3rem 0 1rem"><span class="num">&gt;</span> Add your name</div>
-<div class="section-head floor-intro"><p>Everyone here is a builder, so we keep it builder-native: you add yourself by editing one file and opening a pull request. Once it's merged, your entry shows up above. The friction is the point — it keeps the list real and self-moderating.</p></div>
-
-<div class="floor-fields">
-<div class="floor-field"><div class="fname">Name</div><p>Your name or handle. However you want to be known on the floor.</p></div>
-<div class="floor-field"><div class="fname">What you're building</div><p>One line on the idea, product, or thing you're working on right now.</p></div>
-<div class="floor-field"><div class="fname">Link</div><p>Where people can find it: a site, repo, or your X profile.</p></div>
-</div>
-
-<div class="floor-steps">
-<div class="floor-step"><span class="n">01</span><h4>Open the repo</h4><p>Head to the <a href="https://github.com/YOUR-ORG/bch-builders-lab" target="_blank" style="color:var(--green-bright);text-decoration:none">Lab Floor repo</a> and find <code>builders.json</code>.</p></div>
-<div class="floor-step"><span class="n">02</span><h4>Add your entry</h4><p>Add a block with your name, what you're building, and a link. Copy the format below.</p></div>
-<div class="floor-step"><span class="n">03</span><h4>Open a pull request</h4><p>Commit your change and open a PR. Keep it to your own entry.</p></div>
-<div class="floor-step"><span class="n">04</span><h4>Get merged</h4><p>Once a maintainer merges it, your entry appears on the floor. Welcome aboard. 💚</p></div>
-</div>
 
 <div class="floor-code-block">
+<span class="c">// The Lab Floor is builder-native. Add yourself by editing one file and</span><br>
+<span class="c">// opening a pull request. Once it is merged, your entry shows up above.</span><br>
+<span class="c">//</span><br>
+<span class="c">// 1. Open the repo and find builders.json</span><br>
+<span class="c">// 2. Add a block with your name, what you are building, and a link</span><br>
+<span class="c">// 3. Open a pull request (keep it to your own entry)</span><br>
+<span class="c">// 4. A maintainer merges it, and you appear on the floor</span><br>
+<br>
 {<br>
 &nbsp;&nbsp;<span class="s">"name"</span>: <span class="s">"Your Name"</span>,<br>
-&nbsp;&nbsp;<span class="s">"building"</span>: <span class="s">"One line on what you're working on"</span>,<br>
+&nbsp;&nbsp;<span class="s">"building"</span>: <span class="s">"One line on what you are working on"</span>,<br>
 &nbsp;&nbsp;<span class="s">"link"</span>: <span class="s">"https://your-link.com"</span><br>
 }
 </div>
 
 <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
-<a href="https://github.com/YOUR-ORG/bch-builders-lab" target="_blank" class="btn btn-lg">Open the repo →</a>
+<a href="https://github.com/Zunnurayni/bchbuilders" target="_blank" class="btn btn-lg">Open the repo →</a>
 <a href="/#lab" class="btn btn-ghost btn-lg">Join the next Lab</a>
 </div>
 
-<p style="margin-top:2rem;font-family:var(--font-mono);font-size:.72rem;color:var(--text-3)">// note: replace the repo link once the Lab Floor repo is live</p>
+
 
 </div>
 </section>
@@ -402,6 +392,24 @@ footer{padding:4rem 0 3rem}
 
 <script>
 if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }); }
+
+// ===== Lab Floor: load builders live from the repo's builders.json =====
+// Edit builders.json in the repo, open a PR, merge it, and it shows up here.
+const BUILDERS_JSON = 'https://raw.githubusercontent.com/Zunnurayni/bchbuilders/main/builders.json';
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+function linkLabel(url){try{return url.replace(/^https?:\/\//,'').replace(/\/$/,'');}catch(e){return url;}}
+function renderFloor(list){
+  const body=document.getElementById('floorBody'); if(!body)return;
+  if(!list||!list.length){body.innerHTML='<tr><td colspan="3" class="floor-empty">// no builders yet, be the first, open a PR</td></tr>';return;}
+  body.innerHTML=list.map(b=>{
+    const link=b.link?'<a href="'+esc(b.link)+'" target="_blank" rel="noopener">'+esc(linkLabel(b.link))+'</a>':'';
+    return '<tr><td class="name">'+esc(b.name)+'</td><td>'+esc(b.building)+'</td><td>'+link+'</td></tr>';
+  }).join('');
+}
+fetch(BUILDERS_JSON,{cache:'no-store'})
+  .then(r=>r.json())
+  .then(d=>renderFloor((d&&d.builders)||[]))
+  .catch(()=>{const body=document.getElementById('floorBody');if(body)body.innerHTML='<tr><td colspan="3" class="floor-empty">// could not load builders right now, check back soon</td></tr>';});
 </script>
 </body>
 </html>
