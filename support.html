@@ -407,149 +407,79 @@ footer{padding:4rem 0 3rem}
 const BCH_ADDRESS='bitcoincash:qpuzdxhlmwyygy2marsx3tjxzqgk7jg8ccxr77mz0d';
 let bchPrice=213; // fallback
 
-// ============================================================
-//  LIVE funding bar. Reads /api/raised (serverless function).
-//  As BCH lands on the address, the bar fills toward the $500 goal.
-//  Goal + address + baseline are configured in /api/raised.js.
-// ============================================================
-const GOAL_TARGET_USD = 500;
+// Live funding bar. Reads /api/raised (serverless function).
+const GOAL_TARGET_USD=500;
 function paintGoal(raisedUSD,pct){
   const r=document.getElementById('goalRaised'); if(r)r.textContent='$'+raisedUSD;
   const f=document.getElementById('goalFill'); if(f)setTimeout(()=>{f.style.width=pct+'%';},200);
   const p=document.getElementById('goalPct'); if(p)p.textContent=pct+'% funded';
-  // homepage mini-bar (if present)
-  const mr=document.getElementById('miniRaised'); if(mr)mr.textContent='$'+raisedUSD+' / $500';
-  const mf=document.getElementById('miniFill'); if(mf)setTimeout(()=>{mf.style.width=pct+'%';},200);
-  const mp=document.getElementById('miniPct'); if(mp)mp.textContent=pct+'% funded';
 }
 function renderGoal(){
-  // Start at 0, then fetch live total. If the endpoint isn't available
-  // (e.g. previewing the static file), the bar simply stays at $0.
   paintGoal(0,0);
   fetch('/api/raised').then(r=>r.json()).then(d=>{
     if(!d||d.error)return;
-    if(d.needsBaseline){paintGoal(0,0);return;} // baseline not set yet
+    if(d.needsBaseline){paintGoal(0,0);return;}
     paintGoal(d.raisedUSD||0, d.pct||0);
-  }).catch(()=>{/* stay at 0 */});
+  }).catch(()=>{});
 }
 
-// Build filter
-document.getElementById('buildChips').addEventListener('click',e=>{
-if(!e.target.classList.contains('chip'))return;
-const f=e.target.dataset.filter;
-document.querySelectorAll('#buildChips .chip').forEach(c=>c.classList.remove('active'));
-e.target.classList.add('active');
-document.querySelectorAll('#buildsGrid .build-card').forEach(card=>{
-const cats=card.dataset.cats||'';
-card.classList.toggle('hidden',!(f==='all'||cats.includes(f)));
-});
-});
+// BIP21 payment URI builder
+function bip21(usd){ const amt=(usd/bchPrice).toFixed(8); return BCH_ADDRESS+'?amount='+amt; }
+function bchFor(usd){ return (usd/bchPrice).toFixed(6)+' BCH'; }
 
-// Copy address
-function copyAddress(){
-navigator.clipboard.writeText(BCH_ADDRESS);
-const t=document.getElementById('copyToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);
-}
-
-// BIP21 URI builder
-function bip21(usd){
-const amt=(usd/bchPrice).toFixed(8);
-return BCH_ADDRESS+'?amount='+amt;
-}
-function bchFor(usd){return (usd/bchPrice).toFixed(6)+' BCH';}
-
-// Update all BCH conversions
 function refreshConversions(){
-document.getElementById('bchPrice').textContent='$'+bchPrice.toFixed(0);
-document.querySelectorAll('[data-bch-for]').forEach(el=>{
-const usd=parseFloat(el.dataset.bchFor);
-el.textContent=(el.classList.contains('tier-bch')?'≈ ':'')+bchFor(usd);
-});
-document.querySelectorAll('.tier-pay').forEach(el=>{el.href=bip21(parseFloat(el.dataset.pay))});
-// Render QR codes for tiers
-document.querySelectorAll('.tier-qr').forEach(el=>{
-el.innerHTML='';
-const usd=parseFloat(el.dataset.qr);
-try{new QRCode(el,{text:bip21(usd),width:120,height:120,colorDark:'#030706',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M})}catch(e){}
-});
-updateCustom();
+  const bp=document.getElementById('bchPrice'); if(bp)bp.textContent='$'+bchPrice.toFixed(0);
+  document.querySelectorAll('[data-bch-for]').forEach(el=>{
+    const usd=parseFloat(el.dataset.bchFor);
+    el.textContent=(el.classList.contains('tier-bch')?'≈ ':'')+bchFor(usd);
+  });
+  document.querySelectorAll('.tier-pay').forEach(el=>{ el.href=bip21(parseFloat(el.dataset.pay)); });
+  // Render QR codes for tiers
+  document.querySelectorAll('.tier-qr').forEach(el=>{
+    el.innerHTML='';
+    const usd=parseFloat(el.dataset.qr);
+    try{ new QRCode(el,{text:bip21(usd),width:120,height:120,colorDark:'#030706',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+  });
+  updateCustom();
 }
 
 // Tier flip
 document.querySelectorAll('.tier').forEach(tier=>{
-tier.addEventListener('click',e=>{
-if(e.target.closest('.tier-pay'))return; // let pay link work
-tier.classList.toggle('flipped');
-});
+  tier.addEventListener('click',e=>{
+    if(e.target.closest('.tier-pay'))return; // let pay link work
+    tier.classList.toggle('flipped');
+  });
 });
 
 // Custom amount
 const customInput=document.getElementById('customAmount');
 const customBtn=document.getElementById('customPayBtn');
 function updateCustom(){
-const v=parseFloat(customInput.value);
-if(v&&v>0){customBtn.href=bip21(v);customBtn.textContent='Open wallet · '+bchFor(v)+' →';}
-else{customBtn.href='#';customBtn.textContent='Open wallet to pay →';}
+  if(!customInput||!customBtn)return;
+  const v=parseFloat(customInput.value);
+  if(v&&v>0){customBtn.href=bip21(v);customBtn.textContent='Open wallet · '+bchFor(v)+' →';}
+  else{customBtn.href='#';customBtn.textContent='Open wallet to pay →';}
 }
-customInput.addEventListener('input',updateCustom);
-document.querySelectorAll('.amount-preset').forEach(b=>{b.addEventListener('click',()=>{customInput.value=b.dataset.preset;updateCustom();})});
+if(customInput)customInput.addEventListener('input',updateCustom);
+document.querySelectorAll('.amount-preset').forEach(b=>{b.addEventListener('click',()=>{customInput.value=b.dataset.preset;updateCustom();});});
 
-// Fetch live BCH price
+// Copy address
+function copyAddress(){
+  navigator.clipboard.writeText(BCH_ADDRESS);
+  const t=document.getElementById('copyToast'); if(t){t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+}
+
+// Fetch live BCH price, then render everything
 fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin-cash&vs_currencies=usd')
-.then(r=>r.json()).then(d=>{if(d&&d['bitcoin-cash']&&d['bitcoin-cash'].usd){bchPrice=d['bitcoin-cash'].usd;}refreshConversions();})
-.catch(()=>{refreshConversions();});
+  .then(r=>r.json()).then(d=>{if(d&&d['bitcoin-cash']&&d['bitcoin-cash'].usd){bchPrice=d['bitcoin-cash'].usd;}refreshConversions();})
+  .catch(()=>{refreshConversions();});
 
 // Init
 refreshConversions();
 renderGoal();
 
-// ===== Ecosystem Updates feed =====
-let allUpdates=[];
-const catEmoji={Builds:'🚀',Learning:'📚',Tools:'🛠️',Hackathons:'🏆',Events:'📅',Videos:'🎥',Articles:'📝',Releases:'📦'};
-function fmtDate(d){
-  try{const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch(e){return d;}
-}
-function ctaFor(cat){
-  return ({Videos:'Watch',Hackathons:'Learn more',Events:'View event',Releases:'Explore',Tools:'Explore',Learning:'View update',Articles:'Read',Builds:'Explore'})[cat]||'View';
-}
-function renderUpdates(filter){
-  const feed=document.getElementById('updatesFeed');
-  if(!feed)return;
-  let list=allUpdates.slice();
-  // sort newest first by date
-  list.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-  if(filter&&filter!=='all')list=list.filter(u=>u.category===filter);
-  if(!list.length){feed.innerHTML='<div class="updates-empty">// nothing here yet, check back soon</div>';return;}
-  feed.innerHTML=list.map(u=>{
-    const emoji=catEmoji[u.category]||'✨';
-    return '<a href="'+u.link+'" target="_blank" rel="noopener" class="update-card">'
-      +'<div class="update-top"><span class="update-cat">'+emoji+' '+u.category+'</span><span class="update-date">'+fmtDate(u.date)+'</span></div>'
-      +'<h3>'+u.title+'</h3><p>'+u.description+'</p>'
-      +'<div class="update-foot"><span class="update-source">from <b>'+u.source+'</b></span><span class="update-cta">'+ctaFor(u.category)+' &rarr;</span></div>'
-      +'</a>';
-  }).join('');
-}
-fetch('/updates.json').then(r=>r.json()).then(d=>{
-  allUpdates=(d&&d.updates)||[];
-  renderUpdates('all');
-}).catch(()=>{
-  const feed=document.getElementById('updatesFeed');
-  if(feed)feed.innerHTML='<div class="updates-empty">// updates unavailable right now</div>';
-});
-const uc=document.getElementById('updateChips');
-if(uc)uc.addEventListener('click',e=>{
-  if(!e.target.classList.contains('chip'))return;
-  uc.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  e.target.classList.add('active');
-  renderUpdates(e.target.dataset.filter);
-});
-
-// Register service worker (PWA install + offline)
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
+// Register service worker
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }); }
 </script>
 </body>
 </html>
