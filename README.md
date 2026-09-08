@@ -1,92 +1,69 @@
-# BCH Builders Lab — site + live funding bar
+# BCH Builders
 
-This is the full site as a Vercel project. It's the same static site as before,
-plus one serverless function (`/api/raised`) that powers the live funding bar.
+**A community for people building on Bitcoin Cash. Come experiment, learn, and ship real things on the peer-to-peer electronic cash ecosystem.**
 
-## What's here
+BCH Builders is a builder community and a structured learning path. Whether you're a developer, designer, student, or someone with an idea, this is where you go from curious to shipping. We run regular meetups, share resources, showcase what people are building, and support builders with mentorship, exposure, and access to the wider ecosystem.
 
-```
-index.html              the homepage (support teaser links to /support)
-support.html            /support — full funding bar, tiers, QR, wallet pay, partners
-lab-floor.html          /lab-floor — PR-based builder sign-up + who's building table
-updates.json            Ecosystem Updates feed (edit to post updates)
-sw.js                   PWA service worker
-manifest.webmanifest    PWA manifest
-icon-*.png              app icons
-bch-builders-lab-banner.png   social share image
-vercel.json             Vercel config (cleanUrls on, so /support & /lab-floor work)
-api/raised.js           serverless function: returns funding progress
-```
+The mission is simple: stop building in silos. Combine strengths, share what you know, and build tools and services people actually use.
 
-## Pages & routing
+Live at [bchbuilders.online](https://www.bchbuilders.online).
 
-`cleanUrls` is on in vercel.json, so `/support` serves `support.html` and
-`/lab-floor` serves `lab-floor.html` automatically — no `.html` needed in links.
+---
 
-- **Homepage** has a compact Support teaser (with a live mini goal-bar) that links
-  to the full `/support` page.
-- **/support** holds everything: live goal bar, the four tiers with QR flip and
-  wallet pay, direct-send, transparency line, and Partners (CashStamps, OPTN Labs,
-  El Bitcoin).
-- **/lab-floor** is the builder sign-up: a "who's building" table plus instructions
-  for adding yourself via a GitHub pull request (edit `builders.json`, open a PR).
-  **You still need to create the Lab Floor repo** and replace the placeholder
-  `https://github.com/YOUR-ORG/bch-builders-lab` link in lab-floor.html.
+## What we're about
 
-## Deploy
+- **Experiment.** Try the tools, break things, test ideas on Chipnet before going live.
+- **Learn.** Follow a clear path from BCH fundamentals to hands-on smart contract development.
+- **Build.** Turn ideas into working products. AI has lowered the cost of building; the hard part is solving the right problem and getting people to use what you ship.
+- **Collaborate.** Meet other builders, combine strengths, and grow the ecosystem together.
 
-1. Put this whole folder in a Git repo (GitHub).
-2. On vercel.com: New Project → import the repo → Deploy. No build settings needed.
-3. Point your domain (bchbuilders.online) at the Vercel project.
+---
 
-That's it. The static files serve as before; `/api/raised` runs as a function.
+## The learning path
 
-## Turn the funding bar live (2 steps)
+A structured journey, from your first read to shipping on-chain. All free, all on the [Learn page](https://www.bchbuilders.online/#knowledge).
 
-The bar reads **total BCH ever received** by the donation address, subtracts a
-**baseline** (so this campaign starts at $0), converts to USD at the live price,
-and fills toward the **$500** goal. Spending the funds never drops the bar,
-because it reads *total received*, not *balance*.
+**Read:** BCH fundamentals, developer docs, and the education hub.
+**Watch & Follow:** video tutorials and the people building in the ecosystem.
+**Build Hands-On:** CashScript, the CashScript Arena, the Bitauth IDE, and browser playgrounds to write and test contracts.
+**Go Deeper:** the whitepaper, protocol documentation, and research.
 
-Everything is configured at the top of `api/raised.js`:
+Start reading, then move into building. By the end you'll have the tools to ship something real on Bitcoin Cash.
 
-```js
-const ADDRESS  = 'bitcoincash:qpuz...';  // your donation address
-const GOAL_USD = 500;                     // one full Lab session
-const BASELINE_BCH = null;                // <-- you'll set this once
-```
+---
 
-### Step 1 — deploy once with `BASELINE_BCH = null`
+## The Lab Floor
 
-Visit `https://your-site/api/raised`. Because the baseline isn't set, it returns:
+This repo powers the **Lab Floor** at [bchbuilders.online/lab-floor](https://www.bchbuilders.online/lab-floor): the people building at BCH Builders sessions and what they're shipping right now. Adding yourself is builder-native. You edit one file and open a pull request.
 
-```json
-{ "needsBaseline": true, "currentTotalBCH": 1.2345, "message": "..." }
-```
+1. Fork this repo (or edit directly if you have access).
+2. Open [`builders.json`](./builders.json).
+3. Add a block with your **name**, **what you're building**, and a **link**:
 
-Copy that `currentTotalBCH` number.
+   ```json
+   {
+     "name": "Your Name",
+     "building": "One line on what you're working on",
+     "link": "https://your-link.com"
+   }
+   ```
 
-### Step 2 — lock the baseline
+4. Open a pull request. Keep it to your own entry.
+5. Once a maintainer merges it, your entry appears on the Lab Floor. Welcome aboard. 💚
 
-Set `BASELINE_BCH` to that number and redeploy:
+### Guidelines
 
-```js
-const BASELINE_BCH = 1.2345;   // campaign now starts at $0
-```
+- One entry per builder.
+- Keep "building" to a single clear line.
+- Use a real link: a site, repo, or your X profile.
+- The friction is the point. It keeps the list real and self-moderating.
 
-From now on, only NEW payments count. The bar starts empty and fills as BCH
-arrives. Every visitor's page fetches the live number on load.
+---
 
-## Notes
+## Join the community
 
-- **Goal is in USD ($500), converted live.** If the BCH price moves, the dollar
-  value of received BCH moves with it, so the bar can shift slightly on a quiet
-  day even with no new payments. That's expected with a USD-denominated goal.
-- Price comes from CoinGecko; if it's ever down, the function falls back to a
-  safe default so the bar never breaks.
-- The function caches results for 30s so the explorer APIs aren't hammered.
-- Data source: blocksdk BCH API (no key), with a fallback explorer. If you ever
-  want to swap in your own indexer (Chaingraph/Fulcrum), edit
-  `getTotalReceivedBCH()` in `api/raised.js` — that's the only function to change.
-- To start a brand-new campaign later, just update `BASELINE_BCH` to the current
-  total again. Bar resets to $0.
+The conversation happens on Telegram. Ask questions, share what you're building, find collaborators.
+
+**Telegram:** https://t.me/+JGu2DCf4Pq5iN2Jk
+
+Stop building in silos. Come build with us.

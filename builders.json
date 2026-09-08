@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "name": "Nurain",
+      "building": "Paysat — non-custodial BCH bill payments for Nigeria",
+      "link": "https://trypaysats.xyz"
+    },
+    {
+      "name": "Jerry Qian",
+      "building": "OPTN Wallet — CashStamps sweeps & CashTokens minting",
+      "link": "https://x.com/OPTNLabs"
+    },
+    {
+      "name": "George Bence",
+      "building": "Bugs.cash — play-to-earn NFT layer on a BCH faucet game",
+      "link": "https://bugs.cash"
+    }
+  ]
+}
