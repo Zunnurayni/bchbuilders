@@ -1,6 +1,6 @@
 // BCH Builders Lab — service worker
 // Bump CACHE version whenever you redeploy so users get fresh content.
-const CACHE = 'bch-builders-lab-v22';
+const CACHE = 'bch-builders-lab-v23';
 const CORE = [
   '/',
   '/index.html',
