@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "category": "Articles",
+      "title": "Meetup 5 Recap: AI changed the cost of building",
+      "description": "The hard part didn't move. Our fifth session on AI meets Bitcoin Cash: problem-first building, the full builder journey, and why collaboration is infrastructure.",
+      "source": "BCH Builders Lab",
+      "date": "2026-09-06",
+      "link": "https://x.com/Nurain_Dev/status/2097328663532278024"
+    },
+    {
       "category": "Events",
       "title": "Sayoshi Nakamario Presents Bitcoin Cash to University Students",
       "description": "Sayoshi introduces BCH and its potential to the next generation of university builders at UBC.",
