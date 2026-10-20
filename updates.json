@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "category": "Events",
+      "title": "Next Lab: Getting Started with BCH Blaze",
+      "description": "Virtual info session on how to get started with BCH Blaze: what to build, how to build it, and finding a team. All skill levels welcome. Friday, Oct 30, 7:00 PM WAT.",
+      "source": "BCH Builders Lab",
+      "date": "2026-10-20",
+      "link": "https://luma.com/2mj7qwqk"
+    },
+    {
       "category": "Hackathons",
       "title": "BCH Blaze is back: registration open",
       "description": "An 8-day online Bitcoin Cash hackathon with an $8,000 prize pool. Hacking runs Nov 14 to 22, winners on Nov 28.",
