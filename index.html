@@ -313,6 +313,34 @@ footer{padding:4rem 0 3rem}
 .footer-tag span{color:var(--green-bright)}
 .footer-version{font-family:var(--font-mono);font-size:.7rem;color:var(--text-3)}
 .mt-4{margin-top:2rem}
+
+/* BCH Blaze hackathon */
+.blaze{--blaze:#F0283C;--blaze-hot:#FF4D5E;padding-top:1rem}
+.blaze-card{position:relative;border:1px solid rgba(240,40,60,.35);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#140507 0%,#0A0304 60%,#030706 100%);box-shadow:0 0 60px rgba(240,40,60,.12)}
+.blaze-banner{display:block;width:100%;aspect-ratio:3/1;object-fit:cover;border-bottom:1px solid rgba(240,40,60,.25)}
+.blaze-body{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;padding:clamp(1.25rem,3vw,2rem)}
+.blaze-avatar{width:72px;height:72px;border-radius:16px;object-fit:cover;border:2px solid var(--blaze);box-shadow:0 0 22px rgba(240,40,60,.35)}
+.blaze-status{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blaze-hot);margin-bottom:.5rem}
+.blaze-status .dot{width:7px;height:7px;border-radius:50%;background:var(--blaze-hot);animation:pulse 2s ease-in-out infinite}
+.blaze h2{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:.4rem}
+.blaze h2 em{font-style:italic;font-weight:400;color:var(--blaze-hot)}
+.blaze-desc{color:var(--text-2);font-size:.95rem;max-width:560px}
+.blaze-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.blaze-facts span{font-family:var(--font-mono);font-size:.72rem;color:var(--text);padding:.35rem .7rem;border:1px solid rgba(240,40,60,.3);border-radius:999px;background:rgba(240,40,60,.06)}
+.blaze-actions{display:flex;flex-direction:column;gap:.6rem;align-items:stretch}
+.btn-blaze{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.6rem;border-radius:10px;background:var(--blaze);color:#fff;font-family:var(--font-mono);font-weight:600;font-size:.9rem;text-decoration:none;letter-spacing:.02em;box-shadow:0 0 0 0 rgba(240,40,60,.5);animation:blazePulse 2.4s ease-out infinite;transition:background .2s,transform .2s}
+.btn-blaze:hover{background:var(--blaze-hot);transform:translateY(-2px)}
+@keyframes blazePulse{0%{box-shadow:0 0 0 0 rgba(240,40,60,.5)}70%{box-shadow:0 0 0 12px rgba(240,40,60,0)}100%{box-shadow:0 0 0 0 rgba(240,40,60,0)}}
+.blaze-more{text-align:center;font-family:var(--font-mono);font-size:.75rem;color:var(--text-2);text-decoration:none}
+.blaze-more:hover{color:var(--blaze-hot)}
+.blaze-timeline{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(240,40,60,.2)}
+.blaze-timeline div{padding:1rem clamp(1rem,2.5vw,1.5rem);border-right:1px solid rgba(240,40,60,.15)}
+.blaze-timeline div:last-child{border-right:0}
+.blaze-timeline .lbl{font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3)}
+.blaze-timeline .val{font-family:var(--font-display);font-size:.95rem;color:var(--text);margin-top:.2rem}
+@media(max-width:820px){.blaze-body{grid-template-columns:auto 1fr}.blaze-actions{grid-column:1/-1}.blaze-timeline{grid-template-columns:repeat(2,1fr)}.blaze-timeline div:nth-child(2){border-right:0}.blaze-timeline div:nth-child(-n+2){border-bottom:1px solid rgba(240,40,60,.15)}}
+@media(max-width:480px){.blaze-avatar{width:56px;height:56px}}
+@media(prefers-reduced-motion:reduce){.btn-blaze,.blaze-status .dot{animation:none}}
 </style>
 </head>
 <body>
@@ -370,6 +398,34 @@ footer{padding:4rem 0 3rem}
 </g>
 </svg>
 <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BCH Blaze hackathon -->
+<section class="blaze" id="blaze">
+<div class="container">
+<div class="blaze-card">
+<a href="https://dorahacks.io/hackathon/bchblaze2026/detail" target="_blank" rel="noopener"><img src="/blaze-banner.jpg" alt="BCH Blaze Hackathon" class="blaze-banner" loading="lazy" width="1500" height="500"></a>
+<div class="blaze-body">
+<img src="/blaze-avatar.jpg" alt="BCH Blaze" class="blaze-avatar" width="72" height="72">
+<div>
+<div class="blaze-status"><span class="dot"></span><span id="blazeStatus">Registration open</span></div>
+<h2>BCH Blaze is <em>back.</em> 🔥</h2>
+<p class="blaze-desc">An 8-day online hackathon for developers, designers and entrepreneurs building on Bitcoin Cash. Go solo or bring a team of up to four, ship something real, and compete for the prize pool.</p>
+<div class="blaze-facts"><span>💰 $8,000 prize pool</span><span>🌍 Online</span><span>👥 Solo or teams of 4</span><span>🎯 Bounties + TokenHunt</span></div>
+</div>
+<div class="blaze-actions">
+<a href="https://dorahacks.io/hackathon/bchblaze2026/detail" target="_blank" rel="noopener" class="btn-blaze">Join BCH Blaze →</a>
+<a href="https://bchblaze.cash/" target="_blank" rel="noopener" class="blaze-more">Full details at bchblaze.cash</a>
+</div>
+</div>
+<div class="blaze-timeline">
+<div><div class="lbl">Registration closes</div><div class="val">Fri, Nov 13</div></div>
+<div><div class="lbl">Kick-off</div><div class="val">Sat, Nov 14</div></div>
+<div><div class="lbl">Hacking</div><div class="val">Nov 14 to 22</div></div>
+<div><div class="lbl">Showcase and winners</div><div class="val">Sat, Nov 28</div></div>
 </div>
 </div>
 </div>
@@ -876,6 +932,10 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
+
+// BCH Blaze status label follows the schedule (UTC)
+(function(){var el=document.getElementById('blazeStatus');if(!el)return;var n=Date.now(),d=function(s){return Date.parse(s)};
+var t=n<d('2026-11-13T23:59:00Z')?'Registration open':n<d('2026-11-14T14:00:00Z')?'Kick-off soon':n<d('2026-11-22T14:00:00Z')?'Hacking is live':n<d('2026-11-28T14:00:00Z')?'Judging in progress':'Winners announced';el.textContent=t;})();
 </script>
 </body>
 </html>
